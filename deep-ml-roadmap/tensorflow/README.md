@@ -1,30 +1,8 @@
-# tensorflow — Deep Learning
+# TensorFlow 80/20 for Data Scientists
 
-Stage 3 of the roadmap. Low-level graph operations, custom training, and production-ready models.
+4 theory READMEs + 30 Python examples.
 
-## Topics
+## Priority
+Tensors -> tf.data -> Keras Sequential/Functional -> compile/fit/evaluate/predict -> callbacks -> GradientTape -> CNN/RNN -> transfer learning -> saving/loading -> GPU/mixed precision.
 
-- **Basics**: tensors, variables, GradientTape, eager execution
-- **CNNs**: image classification, data augmentation, transfer learning
-- **RNNs / LSTMs**: sequence modeling, text classification, time series
-- **Advanced**: custom layers, custom training loops, mixed precision
-- **Deployment**: SavedModel format, TensorFlow Lite, TF Serving
-
-## Structure
-
-```
-tensorflow/
-  basics/           # tensors, ops, autodiff
-  cnns/             # convolutional networks
-  rnns/             # recurrent networks, LSTMs, GRUs
-  advanced/         # custom layers, training loops
-  deployment/       # export and serve models
-  exercises/        # practice problems
-```
-
-## Key Concepts to Lock In
-
-1. Computational graph vs eager execution
-2. GradientTape for custom autodiff
-3. tf.data pipelines for efficient data loading
-4. Transfer learning workflow (freeze → fine-tune)
+Run `01` through `30` in order. Spend the most practice time on `06-12`, `14-18`, `19-27`, and `30`.

@@ -1,0 +1,3 @@
+import tensorflow as tf, numpy as np
+rng=np.random.default_rng(42); X=rng.normal(size=(2400,12)).astype('float32'); y=(X[:,0]+.7*X[:,1]-.4*X[:,2]>0).astype('float32'); Xtr,Xte=X[:2000],X[2000:]; ytr,yte=y[:2000],y[2000:]
+n=tf.keras.layers.Normalization(); n.adapt(Xtr); m=tf.keras.Sequential([tf.keras.layers.Input((12,)),n,tf.keras.layers.Dense(64,'relu'),tf.keras.layers.Dropout(.2),tf.keras.layers.Dense(32,'relu'),tf.keras.layers.Dense(1,'sigmoid')]); m.compile('adam','binary_crossentropy',metrics=['accuracy',tf.keras.metrics.AUC(name='auc')]); m.fit(Xtr,ytr,validation_split=.2,epochs=20,batch_size=32,callbacks=[tf.keras.callbacks.EarlyStopping(patience=4,restore_best_weights=True)],verbose=0); print(m.evaluate(Xte,yte,verbose=0)); m.save('final_model.keras')
