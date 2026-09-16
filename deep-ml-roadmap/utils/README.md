@@ -1,29 +1,19 @@
-# utils — Shared Helpers
+# Python Utils 80/20 for Data Scientists
 
-Reusable code shared across all library folders. Import from here; don't copy-paste.
+Practical 80/20 coverage of Python utility modules that repeatedly appear in
+data-science, ML, experimentation, automation, and production scripts.
 
-## Structure
+Focus:
+- pathlib, os, glob, shutil
+- json, csv, pickle
+- datetime, re
+- collections
+- itertools, functools, operator
+- statistics
+- exceptions and logging
+- random, hashlib
+- dataclasses, argparse
+- sqlite3, tempfile, zipfile
+- reusable and end-to-end data-science workflows
 
-```
-utils/
-  data_loaders.py       # load common datasets (MNIST, CIFAR, CSV)
-  metrics.py            # custom evaluation metrics
-  plotting.py           # loss curves, confusion matrix, feature importance
-  preprocessing.py      # transforms used across multiple stages
-  experiment.py         # seed setting, reproducibility helpers
-```
-
-## Import Convention
-
-Add the repo root to your Python path and import directly:
-
-```python
-from utils.plotting import plot_confusion_matrix
-from utils.metrics import f1_macro
-from utils.data_loaders import load_csv_split
-```
-
-## Rule
-
-If you write a helper twice, it belongs here.
-Keep functions small, documented with a one-line docstring, and dependency-light.
+Read the 4 theory files first, then run the workbase files in order.
