@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepali Asset Description Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0e17;
+            --bg-secondary: #111827;
+            --fg: #f1f5f9;
+            --muted: #64748b;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --card: #1e293b;
+            --border: #334155;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            min-height: 100vh;
+        }
+
+        .font-display {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+
+        .bg-pattern {
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 50%);
+        }
+
+        .glass-card {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: var(--bg);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-accent:hover {
+            background: linear-gradient(135deg, var(--accent-hover), #0284c7);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(56, 189, 248, 0.3);
+        }
+
+        .input-field {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            color: var(--fg);
+            font-size: 16px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+        }
+
+        .result-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .result-card.predicted {
+            border-color: var(--success);
+            animation: pulse-success 0.5s ease;
+        }
+
+        @keyframes pulse-success {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            50% { box-shadow: 0 0 20px 5px rgba(34, 197, 94, 0.2); }
+        }
+
+        .confidence-bar {
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), var(--accent));
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .loader {
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 640px) {
+            .prediction-result {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-pattern min-h-screen p-4">
+
+    <div class="max-w-2xl mx-auto w-full">
+        
+        <!-- Header -->
+        <header class="text-center mb-8 animate-fade-in">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-2">Nepali Asset Predictor</h1>
+            <p class="text var(--muted) text-lg">Predict descriptions for Nepali assets using Machine Learning</p>
+        </header>
+
+        <!-- Input Form -->
+        <div class="glass-card rounded-2xl p-6 mb-6 animate-fade-in" style="animation-delay: 0.1s;">
+            <form id="predictForm" novalidate>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-2" for="assetInput">Enter Asset Name or Description:</label>
+                    <input 
+                        type="text" 
+                        id="assetInput" 
+                        class="input-field" 
+                        placeholder="e.g., Pashupatinath Temple, Kathmandu Durbar Square, Mount Everest..."
+                        autocomplete="off"
+                        required
+                    >
+                </div>
+                <button 
+                    type="submit" 
+                    class="btn-accent mb-4 py-3 rounded-xl"
+                >
+                    <span class="absolute-left-0 hidden sm:inline">Predict</span>
+                    <span>Predict</span>
+                    <svg class="ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+
+        <!-- Results Area -->
+        <div id="results" class="glass-card rounded-2xl p-6 hidden animate-fade-in" style="animation-delay: 0.2s;">
+            <div class="flex items-center mb-4">
+                <span class="category-badge" id="categoryBadge"></span>
+            </div>
+            
+            <h2 class="text-xl font-bold mb-2" id="predictionResult">Prediction will appear here</h2>
+            
+            <div class="confidence-bar mb-4">
+                <div class="confidence-fill" id="confidenceFill" style="width: 0%"></div>
+            </div>
+            <p class="text-sm var(--muted)" id="confidenceText">Confidence: 0%</p>
+            
+            <div class="mt-4 pt-4 border-t" id="confidenceDetails">
+                <!-- Confidence details will appear here -->
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="glass-card rounded-2xl p-6 text-center hidden animate-fade-in" style="animation-delay: 0.1s;">
+            <div class="loader mx-auto mb-4"></div>
+            <p class="var(--muted)">Analyzing...</p>
+        </div>
+
+    </div>
+
+    <script>
+        const form = document.getElementById('predictForm');
+        const results = document.getElementById('results');
+        const loading = document.getElementById('loading');
+        const input = document.getElementById('assetInput');
+        const categoryBadge = document.getElementById('categoryBadge');
+        const predictionResult = document.getElementById('predictionResult');
+        const confidenceFill = document.getElementById('confidenceFill');
+        const confidenceText = document.getElementById('confidenceText');
+        const confidenceDetails = document.getElementById('confidenceDetails');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const inputText = input.value.trim();
+            if (!inputText) return;
+
+            // Show loading, hide results
+            loading.classList.remove('hidden');
+            results.classList.add('hidden');
+            input.disabled = true;
+            form.querySelector('button').disabled = true;
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ input_text: inputText })
+                });
+
+                const data = await response.json();
+                
+                if (data.error) {
+                    alert(data.error);
+                    return;
+                }
+
+                // Update UI with results
+                loading.classList.add('hidden');
+                results.classList.remove('hidden');
+                
+                // Set category badge
+                categoryBadge.innerHTML = `<span class="bg-success/20 text-success rounded px-2 py-1 mr-1">#${data.category}</span>`;
+                
+                // Set prediction result
+                predictionResult.textContent = `Predicted: ${data.category}`;
+                
+                // Set confidence
+                const confidencePercent = (data.confidence * 100).toFixed(1);
+                confidenceFill.style.width = `${confidencePercent}%`;
+                confidenceText.textContent = `Confidence: ${confidencePercent}%`;
+                
+                // Add confidence details
+                confidenceDetails.innerHTML = `
+                    <div class="text-xs var(--muted) mb-1">Most likely category:</div>
+                    <span class="font-medium">${data.category}</span>
+                `;
+                
+                // Add predicted class animation
+                results.classList.add('predicted');
+                setTimeout(() => results.classList.remove('predicted'), 500);
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to predict. Please try again.');
+                loading.classList.add('hidden');
+                results.classList.add('hidden');
+            } finally {
+                input.disabled = false;
+                form.querySelector('button').disabled = false;
+                input.focus();
+            }
+        });
+
+        // Auto-focus on load
+        document.addEventListener('DOMContentLoaded', () => input.focus());
+    </script>
+
+</body>
+</html>

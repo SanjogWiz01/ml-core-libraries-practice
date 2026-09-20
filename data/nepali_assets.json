@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Pashupatinath Temple",
+    "category": "religious",
+    "base_desc": "Hindu temple complex on the banks of the Bagmati River in Kathmandu"
+  },
+  {
+    "id": 2,
+    "name": "Swayambhunath Stupa",
+    "category": "religious",
+    "base_desc": "Ancient Buddhist stupa known as the Monkey Temple on a hill in Kathmandu"
+  },
+  {
+    "id": 3,
+    "name": "Boudhanath Stupa",
+    "category": "religious",
+    "base_desc": "One of the largest spherical stupas in Nepal, important center of Tibetan Buddhism"
+  },
+  {
+    "id": 4,
+    "name": "Kathmandu Durbar Square",
+    "category": "historical",
+    "base_desc": "Historic plaza with palaces, temples, and courtyards in the heart of Kathmandu"
+  },
+  {
+    "id": 5,
+    "name": "Bhaktapur Durbar Square",
+    "category": "historical",
+    "base_desc": "Medieval palace complex with 55 windows and artistic courtyards"
+  },
+  {
+    "id": 6,
+    "name": "Patan Durbar Square",
+    "category": "historical",
+    "base_desc": "Ancient Newar palace complex with exquisite stone and metal carvings"
+  },
+  {
+    "id": 7,
+    "name": "Chitwan National Park",
+    "category": "natural",
+    "base_desc": "UNESCO World Heritage site with Bengal tigers and one-horned rhinos"
+  },
+  {
+    "id": 8,
+    "name": "Sagarmatha National Park",
+    "category": "natural",
+    "base_desc": "Home to Mount Everest and Himalayan wildlife"
+  },
+  {
+    "id": 9,
+    "name": "Lumbini",
+    "category": "religious",
+    "base_desc": "Birthplace of Lord Gautama Buddha"
+  },
+  {
+    "id": 10,
+    "name": "Mount Everest",
+    "category": "natural",
+    "base_desc": "World's highest peak at 8,848.86 meters"
+  }
+]
