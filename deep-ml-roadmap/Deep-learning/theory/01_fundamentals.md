@@ -1,5 +1,5 @@
 # Deep Learning Fundamentals
-- Neural network: learnable transformations from inputs to outputs.
+- Neural network: learnable transformations from inputs to outputs. 
 - Neuron: `z = Wx + b`, followed by an activation.
 - Core loop: forward pass -> loss -> gradients -> optimizer update.
 - Activations: ReLU for hidden layers; sigmoid for binary output; softmax for multiclass.
