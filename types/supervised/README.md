@@ -43,6 +43,8 @@ sources:
 
 - LinearRegression, Ridge, Lasso, ElasticNet  -> `linear-regression/`
 - PolynomialFeatures expansion                 -> `linear-regression/`
+- LogisticRegression, calibration, thresholds  -> `logistic-regression/`
+- imbalanced-learn (SMOTE), `class_weight`     -> `logistic-regression/`
 - DecisionTree, RandomForest, GradientBoosting -> `../../random forest/`
 - k-NN, SVM, NaiveBayes, NeuralNets           -> planned
 
@@ -51,7 +53,7 @@ sources:
 | Folder | Status |
 |--------|--------|
 | [`linear-regression/`](linear-regression/) | complete - 3 guides + 17 runnable scripts |
-| `logistic-regression/` | planned |
+| [`logistic-regression/`](logistic-regression/) | complete - 3 guides + 9 runnable scripts |
 | `decision-trees/` | planned |
 | `svm/` | planned |
 
