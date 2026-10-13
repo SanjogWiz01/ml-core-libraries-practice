@@ -47,14 +47,24 @@ The goal is usually one of three things:
 
 ## Current Contents
 
-Nothing yet - scripts will be added here.
+Runnable practice scripts live in [`practice/`](practice/). Each file is numbered
+in a suggested learning order.
 
-| Folder | Status |
-|--------|--------|
-| `k-means-clustering/` | planned |
-| `pca-dimensionality-reduction/` | planned |
-| `dbscan-density-clustering/` | planned |
-| `anomaly-detection/` | planned |
+| Range | Focus |
+|-------|-------|
+| `01`-`05` | K-Means, centroids/inertia, elbow, silhouette, scaling |
+| `06`-`09` | Hierarchical clustering, dendrograms, DBSCAN |
+| `10`-`13` | PCA (basics, variance, visualisation), t-SNE |
+| `14`-`17` | Gaussian Mixture, Isolation Forest, validity metrics, MiniBatch |
+| `18`-`21` | Image quantization, PCA reconstruction, Kernel PCA, NMF |
+| `22`-`25` | One-Class SVM, LOF, Spectral clustering, text clustering |
+| `26`-`30` | k-means++ init, connectivity constraints, BIRCH, Mean Shift, Affinity Propagation |
+| `31`-`36` | PCA whitening, TruncatedSVD/LSA, FastICA, Factor Analysis, LDA, Isomap |
+| `37`-`38` | Elliptic Envelope, cluster profiling |
+| `39`-`41` | LLE, MDS, Spectral embedding |
+| `42`-`45` | GMM model selection, Bayesian GMM, stability, OPTICS |
+| `46`-`48` | Incremental PCA, feature agglomeration, Apriori association rules |
+| `49`-`51` | PCA reconstruction anomalies, anomaly ensemble, silhouette diagram |
 
 ## Related
 
