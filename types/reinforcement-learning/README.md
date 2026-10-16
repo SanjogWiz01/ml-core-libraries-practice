@@ -72,13 +72,21 @@ fine-tuning with RLHF, traffic signal control, portfolio trading.
 
 ## Current Contents
 
-Nothing yet - notebooks and scripts will be added here.
+Runnable practice scripts live in [`practice/`](practice/). Each file is numbered
+in a suggested learning order and is self-contained (pure NumPy, no gymnasium).
 
-| Topic | Status |
-|-------|--------|
-| `q-learning-gridworld/` | planned |
-| `sarsa-vs-qlearning/` | planned |
-| `dqn-cartpole/` | planned |
+| Range | Focus |
+|-------|-------|
+| `01` | MDPs, returns, Bellman equations |
+| `02` | Building a gridworld environment |
+| `03` | Policy evaluation (iterative and exact) |
+| `04` | Value iteration and policy extraction |
+| `05` | Q-Learning (off-policy TD control) |
+| `06` | SARSA vs Q-Learning (on-policy vs off-policy) |
+| `07` | Exploration strategies (epsilon, softmax, UCB, Thompson) |
+| `08` | Monte Carlo control (exploring starts, deep exploration) |
+| `09` | n-step returns, Expected SARSA, TD(lambda) |
+| `10` | Policy gradients (REINFORCE with baseline, entropy) |
 
 ## Related
 
