@@ -46,7 +46,7 @@ Run:  python 01_mdp_returns_bellman.py
 """
 
 import numpy as np
-
+#this import numpy
 SEED = 42
 
 print("=" * 78)
