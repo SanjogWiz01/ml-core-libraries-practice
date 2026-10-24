@@ -5,3 +5,4 @@ push number 3
 push number 4
 push number 5
 push number 6
+push number 7
