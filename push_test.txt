@@ -1,2 +1,3 @@
 ﻿push number 0
 push number 1
+push number 2
