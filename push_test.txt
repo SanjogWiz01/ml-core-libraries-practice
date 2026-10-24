@@ -2,3 +2,4 @@
 push number 1
 push number 2
 push number 3
+push number 4
