@@ -8,3 +8,4 @@ push number 6
 push number 7
 push number 8
 push number 9
+push number 10
