@@ -22,3 +22,4 @@ push number 20
 push number 21
 push number 22
 push number 23
+push number 24
