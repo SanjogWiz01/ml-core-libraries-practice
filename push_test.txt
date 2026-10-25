@@ -32,3 +32,4 @@ push number 30
 push number 31
 push number 32
 push number 33
+push number 34
