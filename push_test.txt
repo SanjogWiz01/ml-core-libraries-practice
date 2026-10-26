@@ -44,3 +44,4 @@ push number 42
 push number 43
 push number 44
 push number 45
+push number 46
