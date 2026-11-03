@@ -98,3 +98,4 @@ push number 96
 push number 97
 push number 98
 push number 99
+push number 100
